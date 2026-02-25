@@ -1,0 +1,8 @@
+aws_region = "us-east-1"
+project_name = "ecs-app"
+vpc_cidr = "10.0.0.0/16"
+ecr_repository_name = "app-repo"
+container_name = "app"
+container_image = "nginx:latest"
+container_port = 80
+db_password = "ChangeMe123!"
