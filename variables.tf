@@ -28,7 +28,7 @@ variable "environment" {
 variable "db_name" {
   description = "Database name"
   type        = string
-  default     = "myappdb"
+  default     = "Accounts"
 }
 
 variable "db_username" {

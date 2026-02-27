@@ -59,7 +59,7 @@ resource "aws_iam_role_policy" "task_rds_access" {
     Statement = [{
       Effect = "Allow"
       Action = [
-        "rds-db:*"
+        "rds-db:connect"
       ]
       Resource = "*"
     }]

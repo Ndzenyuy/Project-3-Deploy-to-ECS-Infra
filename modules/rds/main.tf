@@ -20,8 +20,8 @@ resource "aws_security_group" "rds" {
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
-    security_groups = [var.beanstalk_sg_id]
-    description     = "Allow MySQL/MariaDB from Elastic Beanstalk instances"
+    security_groups = [var.ecs_security_group_id]
+    description     = "Allow MySQL/MariaDB from ECS tasks"
   }
 
   egress {

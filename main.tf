@@ -43,17 +43,17 @@ module "ecs" {
 }
 
 module "rds" {
-  source            = "./modules/rds"
-  db_name           = var.db_name
-  db_username       = var.db_username
-  db_password       = var.db_password
-  allocated_storage = var.allocated_storage
-  instance_class    = var.db_instance_class
-  vpc_id            = module.network.vpc_id
-  private_subnets   = module.network.private_subnet_ids
-  beanstalk_sg_id   = module.network.ecs_security_group_id
-  project_name      = var.project_name
-  environment       = var.environment
+  source                = "./modules/rds"
+  db_name               = var.db_name
+  db_username           = var.db_username
+  db_password           = var.db_password
+  allocated_storage     = var.allocated_storage
+  instance_class        = var.db_instance_class
+  vpc_id                = module.network.vpc_id
+  private_subnets       = module.network.private_subnet_ids
+  ecs_security_group_id = module.network.ecs_security_group_id
+  project_name          = var.project_name
+  environment           = var.environment
 }
 
 module "dashboard" {

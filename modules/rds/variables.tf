@@ -34,8 +34,8 @@ variable "private_subnets" {
   type        = list(string)
 }
 
-variable "beanstalk_sg_id" {
-  description = "Security group ID of Elastic Beanstalk instances"
+variable "ecs_security_group_id" {
+  description = "Security group ID of ECS tasks"
   type        = string
 }
 
