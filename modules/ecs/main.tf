@@ -2,8 +2,14 @@ resource "aws_ecs_cluster" "ecs-cluster" {
   name = "${var.project_name}-Cluster"
 }
 
+resource "aws_cloudwatch_log_group" "ecs" {
+  name              = "/ecs/${var.project_name}"
+  retention_in_days = 7
 
-#####Task definitions
+  tags = {
+    Name = "${var.project_name}-ecs-logs"
+  }
+}
 
 resource "aws_ecs_task_definition" "lumia-task" {
   family                   = "lumiatech-task-definition"
@@ -22,23 +28,21 @@ resource "aws_ecs_task_definition" "lumia-task" {
       containerPort = 8080
       hostPort      = 8080
       protocol      = "tcp"
-    }],
+    }]
     cpu    = var.container_cpu   
-    memory = var.container_memory 
-    # logConfiguration = {
-    #   logDriver = "awslogs"
-    #   options = {
-    #     awslogs-group         = aws_cloudwatch_log_group.lumia.name
-    #     awslogs-region        = var.region
-    #     awslogs-stream-prefix = "ecs"
-    #   }
-    # }
+    memory = var.container_memory
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = aws_cloudwatch_log_group.ecs.name
+        "awslogs-region"        = var.region
+        "awslogs-stream-prefix" = "ecs"
+      }
+    }
   }])
 }
 
-
 #### Services
-
 
 resource "aws_ecs_service" "client" {
   name            = "Lumiatech-ECS-Service"

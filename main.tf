@@ -24,6 +24,7 @@ module "alb" {
   vpc_id            = module.network.vpc_id
   public_subnet_ids = module.network.public_subnet_ids
   container_port    = 8080
+  certificate_arn   = var.certificate_arn
 }
 
 module "ecs" {

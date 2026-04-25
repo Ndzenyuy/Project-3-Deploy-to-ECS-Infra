@@ -19,6 +19,11 @@ variable "image_uri" {
   type        = string
 }
 
+variable "certificate_arn" {
+  description = "ACM certificate ARN for HTTPS"
+  type        = string
+}
+
 variable "environment" {
   description = "Environment name"
   type        = string

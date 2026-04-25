@@ -13,3 +13,8 @@ variable "public_subnet_ids" {
 variable "container_port" {
   type = number
 }
+
+variable "certificate_arn" {
+  type        = string
+  description = "ACM certificate ARN for HTTPS"  
+}
